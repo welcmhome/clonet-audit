@@ -84,6 +84,7 @@ export const OperationsAudit: React.FC = () => {
     Array<{ id: number; color: string; angle: number; delay: number; dx: number; dy: number }>
   >([]);
   const confettiFiredRef = useRef(false);
+  const blockQ1ClicksUntilRef = useRef(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [showInitialLoad, setShowInitialLoad] = useState(true);
 
@@ -396,7 +397,10 @@ export const OperationsAudit: React.FC = () => {
                 <div className="card-footer-centered">
                   <button
                     onClick={() => {
-                      setTimeout(() => goTo("q1"), 400);
+                      setTimeout(() => {
+                        blockQ1ClicksUntilRef.current = Date.now() + 800;
+                        goTo("q1");
+                      }, 400);
                     }}
                   >
                     Start Audit
@@ -421,9 +425,10 @@ export const OperationsAudit: React.FC = () => {
                       className={
                         answers.q1 === opt ? "option selected" : "option"
                       }
-                      onClick={() =>
-                        setAnswers((prev) => ({ ...prev, q1: opt }))
-                      }
+                      onClick={() => {
+                        if (Date.now() < blockQ1ClicksUntilRef.current) return;
+                        setAnswers((prev) => ({ ...prev, q1: opt }));
+                      }}
                     >
                       {opt}
                     </button>
