@@ -345,8 +345,8 @@ export const OperationsAudit: React.FC = () => {
 
       <div className="audit-frame">
         <header className="audit-header">
-          <div className={step === "intro" ? "header-left header-left-intro" : "header-left"}>
-            {step === "intro" && (
+          <div className={step === "intro" || step === "contact" ? "header-left header-left-intro" : "header-left"}>
+            {(step === "intro" || step === "contact") && (
               <img
                 src="/CLONET%20TRANSPARENT%20LOGO.png"
                 alt="Clonet logo"
@@ -355,7 +355,7 @@ export const OperationsAudit: React.FC = () => {
             )}
           </div>
           <div className="header-center">
-            {step !== "intro" && (
+            {step !== "intro" && step !== "contact" && (
               <img
                 src="/CLONET%20TRANSPARENT%20LOGO.png"
                 alt="Clonet logo"
