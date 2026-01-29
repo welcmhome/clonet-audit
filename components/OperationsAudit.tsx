@@ -84,7 +84,6 @@ export const OperationsAudit: React.FC = () => {
     Array<{ id: number; color: string; angle: number; delay: number; dx: number; dy: number }>
   >([]);
   const confettiFiredRef = useRef(false);
-  const blockOptionClicksRef = useRef(0);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [showInitialLoad, setShowInitialLoad] = useState(true);
 
@@ -396,13 +395,12 @@ export const OperationsAudit: React.FC = () => {
                 </p>
                 <div className="card-footer-centered">
                   <button
-                  onClick={() => {
-                    blockOptionClicksRef.current = Date.now() + 450;
-                    goTo("q1");
-                  }}
-                >
-                  Start Audit
-                </button>
+                    onClick={() => {
+                      setTimeout(() => goTo("q1"), 400);
+                    }}
+                  >
+                    Start Audit
+                  </button>
                 </div>
               </>
             )}
@@ -423,10 +421,9 @@ export const OperationsAudit: React.FC = () => {
                       className={
                         answers.q1 === opt ? "option selected" : "option"
                       }
-                      onClick={() => {
-                        if (Date.now() < blockOptionClicksRef.current) return;
-                        setAnswers((prev) => ({ ...prev, q1: opt }));
-                      }}
+                      onClick={() =>
+                        setAnswers((prev) => ({ ...prev, q1: opt }))
+                      }
                     >
                       {opt}
                     </button>
