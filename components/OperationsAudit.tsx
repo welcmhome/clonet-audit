@@ -1015,6 +1015,7 @@ const styles = `
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    position: relative;
   }
   .header-left {
     width: 80px;
@@ -1037,6 +1038,30 @@ const styles = `
   }
   .step-label {
     white-space: nowrap;
+  }
+  @media (max-width: 768px) {
+    .audit-header {
+      min-height: 56px;
+    }
+    .header-center {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+    .header-center .logo-img {
+      pointer-events: auto;
+    }
+    .header-left,
+    .header-right {
+      position: relative;
+      z-index: 1;
+    }
   }
   .exit-global {
     position: fixed;
