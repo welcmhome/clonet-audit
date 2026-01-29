@@ -85,6 +85,13 @@ export const OperationsAudit: React.FC = () => {
   >([]);
   const confettiFiredRef = useRef(false);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const [showInitialLoad, setShowInitialLoad] = useState(true);
+
+  // Initial 1.5s loading splash when opening the site
+  useEffect(() => {
+    const t = setTimeout(() => setShowInitialLoad(false), 1500);
+    return () => clearTimeout(t);
+  }, []);
 
   // After Q7: show loading, then auto-advance to contact form
   useEffect(() => {
@@ -240,6 +247,25 @@ export const OperationsAudit: React.FC = () => {
           consent
         )
       : true;
+
+  // Initial load: same pixel loading for 1.5s when opening the site
+  if (showInitialLoad) {
+    return (
+      <div className="audit-shell loading-shell">
+        <div className="loading-fullscreen">
+          <div className="loading-wrap loading-wrap-standalone">
+            <p className="loading-copy">Loading…</p>
+            <div className="pixel-grid pixel-grid-large" aria-hidden>
+              {Array.from({ length: 25 }, (_, i) => (
+                <div key={i} className="pixel" />
+              ))}
+            </div>
+          </div>
+        </div>
+        <style jsx>{styles}</style>
+      </div>
+    );
+  }
 
   // Loading step: only the animation, no card/header/exit
   if (step === "loading") {
