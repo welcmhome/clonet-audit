@@ -1490,22 +1490,31 @@ const styles = `
     align-items: center;
     justify-content: center;
     background: #181818;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    box-sizing: border-box;
   }
   .loading-wrap {
-    padding: 32px 0 24px;
+    padding: 32px 24px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 28px;
+    text-align: center;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
   }
   .loading-wrap-standalone {
-    padding: 0;
+    padding: 24px;
     gap: 32px;
   }
   .loading-copy {
     margin: 0;
     font-size: 15px;
     color: #9ca3af;
+    text-align: center;
+    width: 100%;
   }
   .pixel-grid {
     display: grid;
