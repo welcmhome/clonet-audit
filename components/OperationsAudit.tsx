@@ -1282,8 +1282,8 @@ const styles = `
     max-width: none;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 6px;
-    margin-bottom: 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
     box-sizing: border-box;
   }
   .contact-step-inner .field {
@@ -1299,9 +1299,9 @@ const styles = `
   }
   .results-preview {
     max-width: 560px;
-    margin: 14px auto 22px;
-    padding: 16px 20px;
-    border-radius: 18px;
+    margin: 10px auto 16px;
+    padding: 12px 16px;
+    border-radius: 14px;
     border: 1px solid #2f2f2f;
     background: radial-gradient(circle at top, #2a2a2a, #101010);
     box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
@@ -1310,14 +1310,14 @@ const styles = `
   }
   .results-preview-label {
     display: inline-block;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #9ca3af;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .results-preview-content {
-    font-size: 14px;
+    font-size: 13px;
     color: #e5e5e5;
     opacity: 0.85;
     filter: blur(3px);
@@ -1326,44 +1326,44 @@ const styles = `
     padding: 0;
   }
   .results-preview-report-title {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: #f5f5f5;
     letter-spacing: 0.02em;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
+    margin-bottom: 5px;
+    padding-bottom: 4px;
     border-bottom: 1px solid #3a3a3a;
   }
   .results-preview-metrics {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 8px;
+    margin-bottom: 6px;
   }
   .results-preview-kpi {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     color: #ff5700;
-    padding: 4px 8px;
+    padding: 3px 6px;
     background: rgba(255, 87, 0, 0.12);
     border-radius: 4px;
   }
   .results-preview-chart {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-bottom: 8px;
+    gap: 3px;
+    margin-bottom: 5px;
   }
   .results-preview-bar {
-    height: 6px;
+    height: 5px;
     min-width: 20%;
     background: linear-gradient(90deg, #ff5700 0%, #ff9b4a 100%);
     border-radius: 3px;
     transition: width 0.3s ease;
   }
   .results-preview-finding {
-    font-size: 11px;
+    font-size: 10px;
     color: #9ca3af;
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .results-preview::after {
     content: "";
