@@ -755,7 +755,7 @@ export const OperationsAudit: React.FC = () => {
           </section>
 
           {/* footer navigation: hidden on intro, loading, done */}
-          {step !== "intro" && step !== "done" && step !== "loading" && (
+          {step !== "intro" && step !== "done" && (
             <footer className="audit-footer">
               <div className="footer-left">
                 <button
