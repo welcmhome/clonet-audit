@@ -1219,10 +1219,10 @@ const styles = `
     overflow: hidden;
     background: radial-gradient(
       ellipse 120% 90% at 110% -15%,
-      rgba(255, 87, 0, 0.09) 0%,
-      rgba(255, 140, 80, 0.05) 25%,
-      rgba(255, 255, 255, 0.04) 45%,
-      rgba(220, 220, 220, 0.02) 60%,
+      rgba(255, 87, 0, 0.08) 0%,
+      rgba(255, 140, 80, 0.045) 25%,
+      rgba(255, 255, 255, 0.035) 45%,
+      rgba(220, 220, 220, 0.018) 60%,
       transparent 75%
     );
   }
@@ -1268,10 +1268,10 @@ const styles = `
   .page-orange-glow-center {
     background: radial-gradient(
       ellipse 120% 90% at 50% -15%,
-      rgba(255, 87, 0, 0.09) 0%,
-      rgba(255, 140, 80, 0.05) 25%,
-      rgba(255, 255, 255, 0.04) 45%,
-      rgba(220, 220, 220, 0.02) 60%,
+      rgba(255, 87, 0, 0.08) 0%,
+      rgba(255, 140, 80, 0.045) 25%,
+      rgba(255, 255, 255, 0.035) 45%,
+      rgba(220, 220, 220, 0.018) 60%,
       transparent 75%
     );
   }
