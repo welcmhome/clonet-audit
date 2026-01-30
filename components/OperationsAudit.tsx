@@ -344,7 +344,9 @@ export const OperationsAudit: React.FC = () => {
         </div>
       )}
 
-      <div className="audit-frame">
+      {step === "intro" && <div className="intro-orange-glow" aria-hidden />}
+
+      <div className={step === "intro" ? "audit-frame audit-frame-intro" : "audit-frame"}>
         <header className="audit-header">
           <div className={step === "intro" || step === "contact" ? "header-left header-left-intro" : "header-left"}>
             {(step === "intro" || step === "contact") && (
@@ -387,7 +389,6 @@ export const OperationsAudit: React.FC = () => {
         <main className={step === "intro" ? "audit-main intro-main" : "audit-main"}>
           {step === "intro" ? (
             <div className="intro-fullpage">
-              <div className="intro-orange-glow" aria-hidden />
               <div className="intro-shape intro-shape-1" aria-hidden />
               <div className="intro-shape intro-shape-2" aria-hidden />
               <div className="intro-shape intro-shape-3" aria-hidden />
@@ -1213,8 +1214,11 @@ const styles = `
     min-height: 60vh;
   }
   .intro-orange-glow {
-    position: absolute;
+    position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
     pointer-events: none;
     overflow: hidden;
     background: radial-gradient(
@@ -1236,6 +1240,10 @@ const styles = `
     background-size: 180px 180px;
     opacity: 0.2;
     mix-blend-mode: overlay;
+  }
+  .audit-frame-intro {
+    position: relative;
+    z-index: 1;
   }
   .intro-shape {
     position: absolute;
