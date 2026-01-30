@@ -275,7 +275,7 @@ export const OperationsAudit: React.FC = () => {
         <div className="loading-fullscreen">
           <div className="loading-wrap loading-wrap-standalone">
             <p className="loading-copy">
-              Reviewing your answers and preparing your results…
+              Preparing your results…
             </p>
             <div className="pixel-grid pixel-grid-large" aria-hidden>
               {Array.from({ length: 25 }, (_, i) => (
