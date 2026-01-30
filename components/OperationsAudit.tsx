@@ -1010,7 +1010,15 @@ const styles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #000000;
+    background-color: #121212;
+    background-image:
+      radial-gradient(ellipse 85% 85% at 50% 50%, #2a2a2a 0%, #202020 30%, #1a1a1a 60%, #121212 100%),
+      radial-gradient(1.5px 1.5px at 0 0, rgba(255, 255, 255, 0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 24px 24px, rgba(255, 255, 255, 0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48px 8px, rgba(255, 255, 255, 0.18) 0%, transparent 100%),
+      radial-gradient(1px 1px at 8px 48px, rgba(255, 255, 255, 0.12) 0%, transparent 100%);
+    background-size: 100% 100%, 96px 96px, 96px 96px, 96px 96px, 96px 96px;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
     padding: 32px 24px 40px;
     color: #f5f5f5;
     font-family: "Undefined Medium", "Inter Tight", ui-monospace, monospace;
@@ -1528,7 +1536,8 @@ const styles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #000000;
+    background-color: #121212;
+    background-image: radial-gradient(ellipse 85% 85% at 50% 50%, #2a2a2a 0%, #202020 30%, #1a1a1a 60%, #121212 100%);
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     box-sizing: border-box;
   }

@@ -31,7 +31,8 @@ export default function App({ Component, pageProps }: AppProps) {
           height: 100%;
           margin: 0;
           padding: 0;
-          background: #000000;
+          background-color: #121212;
+          background-image: radial-gradient(ellipse 85% 85% at 50% 50%, #2a2a2a 0%, #202020 30%, #1a1a1a 60%, #121212 100%);
         }
         body {
           color: #f5f5f5;
