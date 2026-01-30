@@ -314,7 +314,7 @@ export const OperationsAudit: React.FC = () => {
           className="exit-global"
           onClick={handleExit}
         >
-          Exit
+          EXIT
         </button>
       )}
 
@@ -396,7 +396,7 @@ export const OperationsAudit: React.FC = () => {
               <div className="intro-graphic intro-graphic-dot-3" aria-hidden />
               <div className="intro-block intro-head-block">
                 <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
-                <h2 className="intro-headline">See where you stand.</h2>
+                <h2 className="intro-headline">SEE WHERE YOU STAND.</h2>
                 <p className="intro-lead">
                   A few quick questions about how you run things today. A clear picture of your operations and where the biggest opportunities are.
                 </p>
@@ -410,7 +410,7 @@ export const OperationsAudit: React.FC = () => {
                       }, 400);
                     }}
                   >
-                    Start Audit
+                    START AUDIT
                   </button>
                 </div>
               </div>
