@@ -337,7 +337,7 @@ export const OperationsAudit: React.FC = () => {
                 className="exit-confirm-exit"
                 onClick={doResetAudit}
               >
-                Exit audit
+                Exit Pre-Audit
               </button>
             </div>
           </div>
@@ -391,7 +391,7 @@ export const OperationsAudit: React.FC = () => {
           {step === "intro" ? (
             <div className="intro-fullpage">
               <div className="intro-block intro-head-block">
-                <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
+                <p className="intro-label">[ OPERATIONS &amp; SYSTEMS PRE-AUDIT ]</p>
                 <h2 className="intro-headline">SEE WHERE YOU STAND.</h2>
                 <p className="intro-lead">
                   A few quick questions about how you run things today. A clear picture of your operations and where the biggest opportunities are.
@@ -406,7 +406,7 @@ export const OperationsAudit: React.FC = () => {
                       }, 400);
                     }}
                   >
-                    START AUDIT
+                    START PRE-AUDIT
                   </button>
                 </div>
               </div>
@@ -424,7 +424,7 @@ export const OperationsAudit: React.FC = () => {
               </div>
               <div className="intro-block intro-did-you-know-block">
                 <p className="intro-did-you-know">
-                  <strong>Did you know?</strong> This audit takes about two minutes. Your answers help map where your operations are today, and where they could be.
+                  <strong>Did you know?</strong> This pre-audit takes about two minutes. Your answers help map where your operations are today, and where they could be.
                 </p>
               </div>
             </div>
@@ -690,7 +690,7 @@ export const OperationsAudit: React.FC = () => {
               <div className="contact-step-inner">
                 <h3>Your results are ready!</h3>
                 <p className="lead-line">
-                  Enter your details to unlock your full audit results.
+                  Enter your details to unlock your full pre-audit results.
                 </p>
 
                 <div className="results-preview">
@@ -698,7 +698,7 @@ export const OperationsAudit: React.FC = () => {
                   <div className="results-preview-content">
                     <div className="results-preview-report">
                       <div className="results-preview-report-title">
-                        Operations &amp; Systems Audit
+                        Operations &amp; Systems Pre-Audit
                       </div>
                       <div className="results-preview-metrics">
                         <span className="results-preview-kpi">12 hrs/wk</span>
@@ -797,7 +797,7 @@ export const OperationsAudit: React.FC = () => {
               <>
                 <h3>What happens next</h3>
                 <p>
-                  We’ll review your audit responses and follow up to continue
+                  We’ll review your pre-audit responses and follow up to continue
                   the conversation. If it’s not a fit, we’ll tell you.
                 </p>
               </>
@@ -807,7 +807,7 @@ export const OperationsAudit: React.FC = () => {
               <>
                 <h3>Thank you</h3>
                 <p>
-                  Thanks for completing the audit. We’ll review your responses
+                  Thanks for completing the pre-audit. We’ll review your responses
                   and be in touch shortly.
                 </p>
               </>
