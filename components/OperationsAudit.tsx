@@ -389,9 +389,18 @@ export const OperationsAudit: React.FC = () => {
         <main className={step === "intro" ? "audit-main intro-main" : "audit-main"}>
           {step === "intro" ? (
             <div className="intro-fullpage">
-              <div className="intro-shape intro-shape-1" aria-hidden />
-              <div className="intro-shape intro-shape-2" aria-hidden />
-              <div className="intro-shape intro-shape-3" aria-hidden />
+              <div className="intro-shooting-star intro-shooting-star-1" aria-hidden />
+              <div className="intro-shooting-star intro-shooting-star-2" aria-hidden />
+              <div className="intro-star-field" aria-hidden>
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+                <span className="intro-star-square" />
+              </div>
               <div className="intro-graphic intro-graphic-line" aria-hidden />
               <div className="intro-graphic intro-graphic-line-2" aria-hidden />
               <div className="intro-graphic intro-graphic-dot-2" aria-hidden />
@@ -1245,34 +1254,46 @@ const styles = `
     position: relative;
     z-index: 1;
   }
-  .intro-shape {
+  .intro-shooting-star {
     position: absolute;
     pointer-events: none;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 50%;
-    animation: introShapePulse 4s ease-in-out infinite;
+    width: 72px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 100%);
+    transform: rotate(-28deg);
+    animation: introShootingStar 5s ease-in-out infinite;
   }
-  .intro-shape-1 {
-    width: 280px;
-    height: 280px;
-    top: -60px;
-    right: -40px;
+  .intro-shooting-star-1 {
+    top: 14%;
+    right: 18%;
     animation-delay: 0s;
   }
-  .intro-shape-2 {
-    width: 120px;
-    height: 120px;
-    bottom: 20%;
-    left: 8%;
-    animation-delay: 1.2s;
+  .intro-shooting-star-2 {
+    top: 32%;
+    right: 8%;
+    transform: rotate(-35deg);
+    animation-delay: 2.4s;
   }
-  .intro-shape-3 {
-    width: 180px;
-    height: 180px;
-    bottom: 15%;
-    right: 15%;
-    animation-delay: 0.6s;
+  .intro-star-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
   }
+  .intro-star-square {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.18);
+    display: block;
+  }
+  .intro-star-field .intro-star-square:nth-child(1) { top: 12%; right: 22%; }
+  .intro-star-field .intro-star-square:nth-child(2) { top: 24%; right: 10%; }
+  .intro-star-field .intro-star-square:nth-child(3) { top: 38%; right: 28%; }
+  .intro-star-field .intro-star-square:nth-child(4) { bottom: 42%; left: 12%; }
+  .intro-star-field .intro-star-square:nth-child(5) { bottom: 28%; left: 22%; }
+  .intro-star-field .intro-star-square:nth-child(6) { bottom: 18%; right: 18%; }
+  .intro-star-field .intro-star-square:nth-child(7) { top: 52%; left: 16%; }
+  .intro-star-field .intro-star-square:nth-child(8) { top: 46%; right: 14%; }
   .intro-graphic {
     position: absolute;
     pointer-events: none;
@@ -1992,15 +2013,9 @@ const styles = `
       transform: translateY(0);
     }
   }
-  @keyframes introShapePulse {
-    0%, 100% {
-      opacity: 0.5;
-      border-color: rgba(255, 255, 255, 0.06);
-    }
-    50% {
-      opacity: 1;
-      border-color: rgba(255, 255, 255, 0.09);
-    }
+  @keyframes introShootingStar {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.5; }
   }
   @keyframes introLineFade {
     0%, 100% {
@@ -2050,10 +2065,6 @@ const styles = `
     }
     .intro-headline {
       font-size: 22px;
-    }
-    .intro-shape-2,
-    .intro-shape-3 {
-      display: none;
     }
     .intro-graphic-line-2,
     .intro-graphic-dot-2,
