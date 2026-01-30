@@ -953,8 +953,8 @@ const styles = `
     max-width: 380px;
     padding: 28px 24px;
     border-radius: 12px;
-    border: 1px solid #2a2a2a;
-    background: #0d0d0d;
+    border: 1px solid #505050;
+    background: #080808;
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
   }
   .exit-confirm-title {
@@ -976,7 +976,7 @@ const styles = `
   .exit-confirm-cancel {
     padding: 10px 18px;
     border-radius: 8px;
-    border: 1px solid #404040;
+    border: 1px solid #606060;
     background: transparent;
     color: #d4d4d4;
     font-size: 14px;
@@ -985,8 +985,8 @@ const styles = `
     transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
   .exit-confirm-cancel:hover {
-    background: #1a1a1a;
-    border-color: #525252;
+    background: #0d0d0d;
+    border-color: #707070;
     color: #f5f5f5;
   }
   .exit-confirm-exit {
@@ -1084,8 +1084,8 @@ const styles = `
     right: 26px;
     padding: 6px 14px;
     border-radius: 999px;
-    border: 1px solid #404040;
-    background: rgba(13, 13, 13, 0.95);
+    border: 1px solid #606060;
+    background: rgba(8, 8, 8, 0.95);
     color: #d4d4d4;
     font-size: 13px;
     font-weight: 500;
@@ -1096,8 +1096,8 @@ const styles = `
     z-index: 20;
   }
   .exit-global:hover {
-    background: rgba(26, 26, 26, 0.98);
-    border-color: #525252;
+    background: rgba(13, 13, 13, 0.98);
+    border-color: #707070;
     color: #f5f5f5;
   }
   .logo-img {
@@ -1118,8 +1118,8 @@ const styles = `
     width: 100%;
     height: 4px;
     border-radius: 999px;
-    background: #1a1a1a;
-    box-shadow: inset 0 0 0 1px #2a2a2a;
+    background: #0d0d0d;
+    box-shadow: inset 0 0 0 1px #505050;
     overflow: hidden;
     position: relative;
   }
@@ -1148,9 +1148,9 @@ const styles = `
     animation: progress-shimmer 1.15s linear infinite;
   }
   .audit-main {
-    background: #0d0d0d;
+    background: #080808;
     border-radius: 16px;
-    border: 1px solid #2a2a2a;
+    border: 1px solid #505050;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     padding: 40px 48px 32px;
   }
@@ -1211,8 +1211,8 @@ const styles = `
     text-align: left;
     border-radius: 10px;
     padding: 14px 20px;
-    border: 1px solid #404040;
-    background: #1a1a1a;
+    border: 1px solid #606060;
+    background: #0d0d0d;
     color: #e5e5e5;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -1272,8 +1272,8 @@ const styles = `
     box-sizing: border-box;
     border-radius: 8px;
     padding: 9px 12px;
-    border: 1px solid #404040;
-    background: #1a1a1a;
+    border: 1px solid #606060;
+    background: #0d0d0d;
     color: #f5f5f5;
     font-size: 15px;
   }
@@ -1282,8 +1282,8 @@ const styles = `
     min-height: 96px;
     border-radius: 8px;
     padding: 10px 12px;
-    background: #1a1a1a;
-    border: 1px solid #404040;
+    background: #0d0d0d;
+    border: 1px solid #606060;
     color: #f5f5f5;
     font-size: 14px;
     resize: vertical;
@@ -1342,8 +1342,8 @@ const styles = `
     margin: 10px auto 16px;
     padding: 12px 16px;
     border-radius: 14px;
-    border: 1px solid #2a2a2a;
-    background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
+    border: 1px solid #505050;
+    background: radial-gradient(circle at top, #0d0d0d, #080808);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
@@ -1372,7 +1372,7 @@ const styles = `
     letter-spacing: 0.02em;
     margin-bottom: 5px;
     padding-bottom: 4px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #555555;
   }
   .results-preview-metrics {
     display: flex;
@@ -1427,8 +1427,8 @@ const styles = `
     width: 16px;
     height: 16px;
     border-radius: 4px;
-    border: 1px solid #404040;
-    background: #1a1a1a;
+    border: 1px solid #606060;
+    background: #0d0d0d;
     accent-color: #ff5700;
   }
   .error {
@@ -1495,8 +1495,8 @@ const styles = `
     transition: all 0.2s ease;
   }
   .audit-footer button.secondary {
-    background: #1a1a1a;
-    border: 1px solid #404040;
+    background: #0d0d0d;
+    border: 1px solid #606060;
     color: #d4d4d4;
   }
   .audit-footer button:not(.secondary) {
@@ -1515,7 +1515,7 @@ const styles = `
   }
   .audit-footer button:disabled,
   .card-footer-centered button:disabled {
-    border-color: #404040;
+    border-color: #606060;
     color: #6b7280;
     cursor: not-allowed;
   }
