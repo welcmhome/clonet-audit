@@ -387,6 +387,7 @@ export const OperationsAudit: React.FC = () => {
         <main className={step === "intro" ? "audit-main intro-main" : "audit-main"}>
           {step === "intro" ? (
             <div className="intro-fullpage">
+              <div className="intro-orange-glow" aria-hidden />
               <div className="intro-shape intro-shape-1" aria-hidden />
               <div className="intro-shape intro-shape-2" aria-hidden />
               <div className="intro-shape intro-shape-3" aria-hidden />
@@ -1210,6 +1211,17 @@ const styles = `
     max-width: 1120px;
     margin: 0 auto;
     min-height: 60vh;
+  }
+  .intro-orange-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 100% 80% at 110% -20%,
+      rgba(255, 87, 0, 0.035) 0%,
+      rgba(255, 87, 0, 0.015) 40%,
+      transparent 70%
+    );
   }
   .intro-shape {
     position: absolute;
