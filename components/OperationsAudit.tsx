@@ -392,7 +392,6 @@ export const OperationsAudit: React.FC = () => {
               <div className="intro-shape intro-shape-3" aria-hidden />
               <div className="intro-graphic intro-graphic-line" aria-hidden />
               <div className="intro-graphic intro-graphic-line-2" aria-hidden />
-              <div className="intro-graphic intro-graphic-dot" aria-hidden />
               <div className="intro-graphic intro-graphic-dot-2" aria-hidden />
               <div className="intro-graphic intro-graphic-dot-3" aria-hidden />
               <div className="intro-block intro-head-block">
@@ -401,6 +400,19 @@ export const OperationsAudit: React.FC = () => {
                 <p className="intro-lead">
                   A few quick questions about how you run things today. A clear picture of your operations and where the biggest opportunities are.
                 </p>
+                <div className="intro-cta-wrap">
+                  <button
+                    className="intro-cta"
+                    onClick={() => {
+                      setTimeout(() => {
+                        blockQ1ClicksUntilRef.current = Date.now() + 800;
+                        goTo("q1");
+                      }, 400);
+                    }}
+                  >
+                    Start Audit
+                  </button>
+                </div>
               </div>
               <div className="intro-block intro-analogy-block">
                 <p className="intro-analogy-label">[ THE SHIFT ]</p>
@@ -418,19 +430,6 @@ export const OperationsAudit: React.FC = () => {
                 <p className="intro-did-you-know">
                   <strong>Did you know?</strong> This audit takes about two minutes. Your answers help map where your operations are today, and where they could be.
                 </p>
-              </div>
-              <div className="intro-cta-wrap">
-                <button
-                  className="intro-cta"
-                  onClick={() => {
-                    setTimeout(() => {
-                      blockQ1ClicksUntilRef.current = Date.now() + 800;
-                      goTo("q1");
-                    }, 400);
-                  }}
-                >
-                  Start Audit
-                </button>
               </div>
             </div>
           ) : (
@@ -1262,15 +1261,6 @@ const styles = `
     left: 6%;
     animation: introLineFade 3.5s ease-in-out infinite 0.8s;
   }
-  .intro-graphic-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    bottom: 28%;
-    left: 14%;
-    animation: introDotPulse 2.5s ease-in-out infinite;
-  }
   .intro-graphic-dot-2 {
     width: 4px;
     height: 4px;
@@ -1312,10 +1302,7 @@ const styles = `
     animation-delay: 0.5s;
   }
   .intro-cta-wrap {
-    animation: introBlockReveal 0.6s ease-out forwards;
-    animation-delay: 0.65s;
-    opacity: 0;
-    transform: translateY(10px);
+    margin-top: 24px;
   }
   .intro-label {
     font-size: 11px;
@@ -1409,47 +1396,38 @@ const styles = `
     color: #d4d4d4;
     font-weight: 600;
   }
-  .intro-cta-wrap {
-    text-align: center;
-    margin-top: 48px;
-    padding-top: 24px;
-  }
   .intro-cta {
     min-width: 140px;
-    padding: 12px 20px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 999px;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.02em;
-    background: transparent;
-    border: 1px solid #505050;
-    color: #d4d4d4;
+    background: #ffffff;
+    border: none;
+    color: #0d0d0d;
     cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    transition: opacity 0.2s ease, transform 0.15s ease;
   }
   .intro-cta:hover {
-    border-color: #606060;
-    color: #f5f5f5;
+    opacity: 0.92;
   }
   .intro-cta:active {
     transform: scale(0.98);
   }
   .intro-cta:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 1px #606060;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
   }
   .audit-card-content {
     animation: cardReveal 0.4s ease-out;
   }
   .site-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 8px;
+    margin-top: 48px;
+    padding-bottom: 24px;
     font-size: 13px;
     color: #9ca3af;
     text-align: center;
-    pointer-events: none;
   }
   h2 {
     font-size: 26px;
