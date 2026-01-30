@@ -1216,12 +1216,26 @@ const styles = `
     position: absolute;
     inset: 0;
     pointer-events: none;
+    overflow: hidden;
     background: radial-gradient(
-      ellipse 100% 80% at 110% -20%,
-      rgba(255, 87, 0, 0.035) 0%,
-      rgba(255, 87, 0, 0.015) 40%,
-      transparent 70%
+      ellipse 120% 90% at 110% -15%,
+      rgba(255, 87, 0, 0.09) 0%,
+      rgba(255, 140, 80, 0.05) 25%,
+      rgba(255, 255, 255, 0.04) 45%,
+      rgba(220, 220, 220, 0.02) 60%,
+      transparent 75%
     );
+  }
+  .intro-orange-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    opacity: 0.2;
+    mix-blend-mode: overlay;
   }
   .intro-shape {
     position: absolute;
