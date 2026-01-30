@@ -6,7 +6,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link rel="icon" href="/Clonet%20app%20logo.png" type="image/png" />
-        <link rel="preload" href="/CLONET%20LOGO%20DARK.png" as="image" />
+        <link rel="preload" href="/CLONET%20TRANSPARENT%20LOGO.png" as="image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

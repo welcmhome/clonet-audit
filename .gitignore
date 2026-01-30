@@ -21,6 +21,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# Git credentials (never commit)
+.git-credentials-local
+
 # Vercel
 .vercel
 

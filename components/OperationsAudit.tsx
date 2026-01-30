@@ -349,7 +349,7 @@ export const OperationsAudit: React.FC = () => {
           <div className={step === "intro" || step === "contact" ? "header-left header-left-intro" : "header-left"}>
             {(step === "intro" || step === "contact") && (
               <img
-                src="/CLONET%20LOGO%20DARK.png"
+                src="/CLONET%20TRANSPARENT%20LOGO.png"
                 alt="Clonet logo"
                 className="logo-img logo-img-intro"
               />
@@ -358,7 +358,7 @@ export const OperationsAudit: React.FC = () => {
           <div className="header-center">
             {step !== "intro" && step !== "contact" && (
               <img
-                src="/CLONET%20LOGO%20DARK.png"
+                src="/CLONET%20TRANSPARENT%20LOGO.png"
                 alt="Clonet logo"
                 className="logo-img"
               />
