@@ -795,7 +795,7 @@ export const OperationsAudit: React.FC = () => {
 
           {/* footer navigation: hidden on intro, loading, done */}
           {step !== "intro" && step !== "done" && (
-            <footer className="audit-footer">
+            <footer className={step === "contact" || step === "final" ? "audit-footer audit-footer-contact" : "audit-footer"}>
               <div className="footer-left">
                 <button
                   className="secondary"
@@ -1159,7 +1159,7 @@ const styles = `
     border-radius: 16px;
     border: 1px solid #505050;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    padding: 40px 48px 32px;
+    padding: 32px 28px 24px;
   }
   .intro-main {
     max-width: 880px;
@@ -1506,6 +1506,12 @@ const styles = `
     align-items: center;
     gap: 12px;
     margin-top: 24px;
+  }
+  .audit-footer-contact {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   }
   .footer-left,
   .footer-right {
