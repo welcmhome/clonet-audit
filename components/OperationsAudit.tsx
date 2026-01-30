@@ -390,8 +390,6 @@ export const OperationsAudit: React.FC = () => {
         <main className={step === "intro" ? "audit-main intro-main" : "audit-main"}>
           {step === "intro" ? (
             <div className="intro-fullpage">
-              <div className="intro-shooting-star intro-shooting-star-1" aria-hidden />
-              <div className="intro-shooting-star intro-shooting-star-2" aria-hidden />
               <div className="intro-block intro-head-block">
                 <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
                 <h2 className="intro-headline">SEE WHERE YOU STAND.</h2>
@@ -1275,27 +1273,6 @@ const styles = `
       transparent 75%
     );
   }
-  .intro-shooting-star {
-    position: absolute;
-    pointer-events: none;
-    width: 72px;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 100%);
-    transform: rotate(-28deg);
-    animation: introShootingStar 5s ease-in-out infinite;
-  }
-  .intro-shooting-star-1 {
-    top: 8%;
-    right: 12%;
-    transform: rotate(-35deg);
-    animation-delay: 2.4s;
-  }
-  .intro-shooting-star-2 {
-    top: 16%;
-    right: 4%;
-    transform: rotate(-28deg);
-    animation-delay: 0s;
-  }
   .intro-block {
     position: relative;
     margin-bottom: 32px;
@@ -1974,10 +1951,6 @@ const styles = `
       opacity: 1;
       transform: translateY(0);
     }
-  }
-  @keyframes introShootingStar {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.5; }
   }
   @keyframes introLineFade {
     0%, 100% {
