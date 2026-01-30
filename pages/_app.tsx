@@ -31,10 +31,10 @@ export default function App({ Component, pageProps }: AppProps) {
           height: 100%;
           margin: 0;
           padding: 0;
-          background: #f5f5f5;
+          background: #000000;
         }
         body {
-          color: #1a1a1a;
+          color: #f5f5f5;
         }
       `}</style>
     </>
