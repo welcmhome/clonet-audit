@@ -385,61 +385,53 @@ export const OperationsAudit: React.FC = () => {
         )}
 
         <main className={step === "intro" ? "audit-main intro-main" : "audit-main"}>
+          {step === "intro" ? (
+            <div className="intro-fullpage">
+              <div className="intro-shape intro-shape-1" aria-hidden />
+              <div className="intro-shape intro-shape-2" aria-hidden />
+              <div className="intro-shape intro-shape-3" aria-hidden />
+              <div className="intro-block intro-head-block">
+                <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
+                <h2 className="intro-headline">See where you stand.</h2>
+                <p className="intro-lead">
+                  A few quick questions about how you run things today. No pitch—just a clear picture of your operations and where the biggest opportunities are.
+                </p>
+              </div>
+              <div className="intro-block intro-analogy-block">
+                <p className="intro-analogy-label">[ THE SHIFT ]</p>
+                <p className="intro-analogy-text">
+                  Imagine refusing to do business with the internet when it arrived. Today that looks unthinkable. The companies that said no fell behind. AI and automation are the same kind of shift—the way business is going. More information, better tools, less waste. The question isn’t whether to get on board; it’s where to start.
+                </p>
+              </div>
+              <div className="intro-block intro-stat-block">
+                <p className="intro-stat">
+                  <span className="intro-stat-num">72%</span>
+                  <span className="intro-stat-label">of business leaders say AI is already critical to how they operate.</span>
+                </p>
+              </div>
+              <div className="intro-block intro-did-you-know-block">
+                <p className="intro-did-you-know">
+                  <strong>Did you know?</strong> This audit takes about two minutes. Your answers help map where your operations are today—and where they could be.
+                </p>
+              </div>
+              <div className="intro-cta-wrap">
+                <button
+                  className="intro-cta"
+                  onClick={() => {
+                    setTimeout(() => {
+                      blockQ1ClicksUntilRef.current = Date.now() + 800;
+                      goTo("q1");
+                    }, 400);
+                  }}
+                >
+                  Start Audit
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
           <section className="audit-card">
             <div key={step} className="audit-card-content">
-            {step === "intro" && (
-              <div className="intro-page">
-                <p className="intro-label">[ YOUR AI PARTNER ]</p>
-                <h2 className="intro-headline">Operations &amp; Systems Audit</h2>
-                <p className="intro-lead">
-                  We partner with companies to streamline operations using AI, automation, and ongoing upkeep—so you stay ahead instead of playing catch-up. This audit shows where you stand today.
-                </p>
-                <div className="intro-grid">
-                  <div className="intro-grid-item">
-                    <span className="intro-icon" aria-hidden>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20V4M4 12l8-8 8 8"/></svg>
-                    </span>
-                    <h3 className="intro-grid-title">Streamline operations</h3>
-                    <p className="intro-grid-text">We help you run with the tools and resources that actually work together—no more scattered systems or manual handoffs.</p>
-                  </div>
-                  <div className="intro-grid-item">
-                    <span className="intro-icon" aria-hidden>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-                    </span>
-                    <h3 className="intro-grid-title">AI tools &amp; automation</h3>
-                    <p className="intro-grid-text">From workflows to systems, we implement and maintain what keeps you ahead—so your business runs on the best tech available.</p>
-                  </div>
-                  <div className="intro-grid-item">
-                    <span className="intro-icon" aria-hidden>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 11-9-9"/><path d="M21 3v6h-6"/></svg>
-                    </span>
-                    <h3 className="intro-grid-title">Ongoing upkeep</h3>
-                    <p className="intro-grid-text">Technology changes fast. We&apos;re the partner that keeps you current—so you never have to say no to the next big shift.</p>
-                  </div>
-                </div>
-                <div className="intro-analogy">
-                  <p className="intro-analogy-text">
-                    The biggest shift since the internet. Businesses that didn&apos;t adopt the internet fell behind. Today, AI and automation are the same kind of shift—and we&apos;re here to make sure you&apos;re on the right side of it.
-                  </p>
-                </div>
-                <p className="intro-did-you-know">
-                  <strong>Did you know?</strong> This short audit helps us see how your operations run today—so we can show you where AI and automation can make the biggest impact.
-                </p>
-                <div className="card-footer-centered">
-                  <button
-                    onClick={() => {
-                      setTimeout(() => {
-                        blockQ1ClicksUntilRef.current = Date.now() + 800;
-                        goTo("q1");
-                      }, 400);
-                    }}
-                  >
-                    Start Audit
-                  </button>
-                </div>
-              </div>
-            )}
-
             {step === "q1" && (
               <>
                 <h3>How would you describe your current operations setup?</h3>
@@ -824,7 +816,7 @@ export const OperationsAudit: React.FC = () => {
           </section>
 
           {/* footer navigation: hidden on intro, loading, done */}
-          {step !== "intro" && step !== "done" && (
+          {step !== "done" && (
             <footer className={step === "contact" || step === "final" ? "audit-footer audit-footer-contact" : "audit-footer"}>
               <div className="footer-left">
                 <button
@@ -914,7 +906,8 @@ export const OperationsAudit: React.FC = () => {
               </div>
             </footer>
           )}
-
+            </>
+          )}
           {step === "intro" && (
             <footer className="audit-footer intro-footer" />
           )}
@@ -1193,97 +1186,132 @@ const styles = `
     padding: 20px 16px 16px;
   }
   .intro-main {
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .intro-main .audit-card {
-    max-width: 880px;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 24px 20px 32px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
   .audit-card {
     max-width: 560px;
     margin: 0 auto;
     text-align: center;
   }
-  .intro-page {
-    text-align: left;
+  .intro-fullpage {
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    min-height: 60vh;
   }
-  .intro-page .card-footer-centered {
-    text-align: center;
-    margin-top: 32px;
+  .intro-shape {
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+  }
+  .intro-shape-1 {
+    width: 280px;
+    height: 280px;
+    top: -60px;
+    right: -40px;
+  }
+  .intro-shape-2 {
+    width: 120px;
+    height: 120px;
+    bottom: 20%;
+    left: 8%;
+  }
+  .intro-shape-3 {
+    width: 180px;
+    height: 180px;
+    bottom: 15%;
+    right: 15%;
+  }
+  .intro-block {
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .intro-head-block {
+    max-width: 520px;
+    margin-right: auto;
+    margin-bottom: 48px;
   }
   .intro-label {
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #9ca3af;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
   .intro-headline {
-    font-size: 26px;
+    font-size: 28px;
     margin-bottom: 16px;
     letter-spacing: -0.02em;
     font-weight: 600;
     color: #f5f5f5;
+    line-height: 1.2;
   }
   .intro-lead {
-    max-width: none;
-    margin: 0 0 28px;
+    margin: 0;
     color: #d4d4d4;
     line-height: 1.55;
     font-size: 16px;
   }
-  .intro-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px 20px;
-    margin-bottom: 28px;
-    padding-top: 20px;
+  .intro-analogy-block {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 24px 0;
     border-top: 1px solid #505050;
   }
-  .intro-grid-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .intro-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    color: #d4d4d4;
-  }
-  .intro-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-  .intro-grid-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #f5f5f5;
-    margin: 0;
-  }
-  .intro-grid-text {
-    font-size: 14px;
+  .intro-analogy-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: #9ca3af;
-    line-height: 1.5;
-    margin: 0;
-  }
-  .intro-analogy {
-    padding: 20px 0;
-    border-top: 1px solid #505050;
-    border-bottom: 1px solid #505050;
-    margin-bottom: 20px;
+    margin: 0 0 12px;
   }
   .intro-analogy-text {
-    max-width: none;
     margin: 0;
     font-size: 15px;
     color: #d4d4d4;
-    line-height: 1.55;
+    line-height: 1.6;
+  }
+  .intro-stat-block {
+    max-width: 380px;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 20px 0;
+  }
+  .intro-stat {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .intro-stat-num {
+    font-size: 36px;
+    font-weight: 600;
+    color: #f5f5f5;
+    letter-spacing: -0.02em;
+  }
+  .intro-stat-label {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.45;
+  }
+  .intro-did-you-know-block {
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: 12%;
+    padding: 24px 0;
+    border-top: 1px solid #505050;
   }
   .intro-did-you-know {
-    max-width: none;
     margin: 0;
     font-size: 14px;
     color: #9ca3af;
@@ -1292,6 +1320,35 @@ const styles = `
   .intro-did-you-know strong {
     color: #d4d4d4;
     font-weight: 600;
+  }
+  .intro-cta-wrap {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+  }
+  .intro-cta {
+    min-width: 160px;
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    background: transparent;
+    border: 1px solid #ff5700;
+    color: #ff5700;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .intro-cta:hover {
+    background: rgba(255, 87, 0, 0.12);
+    border-color: #ff5700;
+    color: #ff5700;
+  }
+  .intro-cta:active {
+    transform: scale(0.98);
+  }
+  .intro-cta:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 87, 0, 0.4);
   }
   .audit-card-content {
     animation: cardReveal 0.4s ease-out;
@@ -1843,12 +1900,26 @@ const styles = `
     .audit-main {
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
     }
-    .intro-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
+    .intro-fullpage {
+      padding: 0;
+    }
+    .intro-head-block,
+    .intro-analogy-block,
+    .intro-stat-block,
+    .intro-did-you-know-block {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .intro-did-you-know-block {
+      margin-right: 0;
     }
     .intro-headline {
       font-size: 22px;
+    }
+    .intro-shape-2,
+    .intro-shape-3 {
+      display: none;
     }
     h2 {
       font-size: 22px;
