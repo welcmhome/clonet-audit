@@ -391,7 +391,10 @@ export const OperationsAudit: React.FC = () => {
               <div className="intro-shape intro-shape-2" aria-hidden />
               <div className="intro-shape intro-shape-3" aria-hidden />
               <div className="intro-graphic intro-graphic-line" aria-hidden />
+              <div className="intro-graphic intro-graphic-line-2" aria-hidden />
               <div className="intro-graphic intro-graphic-dot" aria-hidden />
+              <div className="intro-graphic intro-graphic-dot-2" aria-hidden />
+              <div className="intro-graphic intro-graphic-dot-3" aria-hidden />
               <div className="intro-block intro-head-block">
                 <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
                 <h2 className="intro-headline">See where you stand.</h2>
@@ -1214,24 +1217,28 @@ const styles = `
     pointer-events: none;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 50%;
+    animation: introShapePulse 4s ease-in-out infinite;
   }
   .intro-shape-1 {
     width: 280px;
     height: 280px;
     top: -60px;
     right: -40px;
+    animation-delay: 0s;
   }
   .intro-shape-2 {
     width: 120px;
     height: 120px;
     bottom: 20%;
     left: 8%;
+    animation-delay: 1.2s;
   }
   .intro-shape-3 {
     width: 180px;
     height: 180px;
     bottom: 15%;
     right: 15%;
+    animation-delay: 0.6s;
   }
   .intro-graphic {
     position: absolute;
@@ -1244,6 +1251,16 @@ const styles = `
     transform: rotate(-24deg);
     top: 18%;
     right: 22%;
+    animation: introLineFade 3s ease-in-out infinite;
+  }
+  .intro-graphic-line-2 {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.06), transparent);
+    transform: rotate(12deg);
+    bottom: 35%;
+    left: 6%;
+    animation: introLineFade 3.5s ease-in-out infinite 0.8s;
   }
   .intro-graphic-dot {
     width: 6px;
@@ -1252,15 +1269,53 @@ const styles = `
     background: rgba(255, 255, 255, 0.15);
     bottom: 28%;
     left: 14%;
+    animation: introDotPulse 2.5s ease-in-out infinite;
+  }
+  .intro-graphic-dot-2 {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    top: 42%;
+    right: 12%;
+    animation: introDotPulse 2.8s ease-in-out infinite 0.5s;
+  }
+  .intro-graphic-dot-3 {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    top: 28%;
+    right: 28%;
+    animation: introDotPulse 3s ease-in-out infinite 1s;
   }
   .intro-block {
     position: relative;
     margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: introBlockReveal 0.6s ease-out forwards;
   }
   .intro-head-block {
     max-width: 520px;
     margin-right: auto;
     margin-bottom: 48px;
+    animation-delay: 0.05s;
+  }
+  .intro-analogy-block {
+    animation-delay: 0.2s;
+  }
+  .intro-stat-block {
+    animation-delay: 0.35s;
+  }
+  .intro-did-you-know-block {
+    animation-delay: 0.5s;
+  }
+  .intro-cta-wrap {
+    animation: introBlockReveal 0.6s ease-out forwards;
+    animation-delay: 0.65s;
+    opacity: 0;
+    transform: translateY(10px);
   }
   .intro-label {
     font-size: 11px;
@@ -1276,6 +1331,17 @@ const styles = `
     font-weight: 600;
     color: #f5f5f5;
     line-height: 1.2;
+    position: relative;
+    display: inline-block;
+  }
+  .intro-headline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.25), transparent);
   }
   .intro-lead {
     margin: 0;
@@ -1908,6 +1974,40 @@ const styles = `
       opacity: 1;
     }
   }
+  @keyframes introBlockReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes introShapePulse {
+    0%, 100% {
+      opacity: 0.5;
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+    50% {
+      opacity: 1;
+      border-color: rgba(255, 255, 255, 0.09);
+    }
+  }
+  @keyframes introLineFade {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes introDotPulse {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+  }
   @media (max-width: 768px) {
     .audit-shell {
       padding: 16px 12px 24px;
@@ -1941,6 +2041,11 @@ const styles = `
     }
     .intro-shape-2,
     .intro-shape-3 {
+      display: none;
+    }
+    .intro-graphic-line-2,
+    .intro-graphic-dot-2,
+    .intro-graphic-dot-3 {
       display: none;
     }
     h2 {
