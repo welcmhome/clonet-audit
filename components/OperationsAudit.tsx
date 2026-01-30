@@ -391,20 +391,6 @@ export const OperationsAudit: React.FC = () => {
             <div className="intro-fullpage">
               <div className="intro-shooting-star intro-shooting-star-1" aria-hidden />
               <div className="intro-shooting-star intro-shooting-star-2" aria-hidden />
-              <div className="intro-star-field" aria-hidden>
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-                <span className="intro-star-square" />
-              </div>
-              <div className="intro-graphic intro-graphic-line" aria-hidden />
-              <div className="intro-graphic intro-graphic-line-2" aria-hidden />
-              <div className="intro-graphic intro-graphic-dot-2" aria-hidden />
-              <div className="intro-graphic intro-graphic-dot-3" aria-hidden />
               <div className="intro-block intro-head-block">
                 <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
                 <h2 className="intro-headline">SEE WHERE YOU STAND.</h2>
@@ -1274,66 +1260,6 @@ const styles = `
     transform: rotate(-35deg);
     animation-delay: 2.4s;
   }
-  .intro-star-field {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .intro-star-square {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.18);
-    display: block;
-  }
-  .intro-star-field .intro-star-square:nth-child(1) { top: 12%; right: 22%; }
-  .intro-star-field .intro-star-square:nth-child(2) { top: 24%; right: 10%; }
-  .intro-star-field .intro-star-square:nth-child(3) { top: 38%; right: 28%; }
-  .intro-star-field .intro-star-square:nth-child(4) { bottom: 42%; left: 12%; }
-  .intro-star-field .intro-star-square:nth-child(5) { bottom: 28%; left: 22%; }
-  .intro-star-field .intro-star-square:nth-child(6) { bottom: 18%; right: 18%; }
-  .intro-star-field .intro-star-square:nth-child(7) { top: 52%; left: 16%; }
-  .intro-star-field .intro-star-square:nth-child(8) { top: 46%; right: 14%; }
-  .intro-graphic {
-    position: absolute;
-    pointer-events: none;
-  }
-  .intro-graphic-line {
-    width: 1px;
-    height: 140px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08), transparent);
-    transform: rotate(-24deg);
-    top: 18%;
-    right: 22%;
-    animation: introLineFade 3s ease-in-out infinite;
-  }
-  .intro-graphic-line-2 {
-    width: 1px;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.06), transparent);
-    transform: rotate(12deg);
-    bottom: 35%;
-    left: 6%;
-    animation: introLineFade 3.5s ease-in-out infinite 0.8s;
-  }
-  .intro-graphic-dot-2 {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    top: 42%;
-    right: 12%;
-    animation: introDotPulse 2.8s ease-in-out infinite 0.5s;
-  }
-  .intro-graphic-dot-3 {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    top: 28%;
-    right: 28%;
-    animation: introDotPulse 3s ease-in-out infinite 1s;
-  }
   .intro-block {
     position: relative;
     margin-bottom: 32px;
@@ -2065,11 +1991,6 @@ const styles = `
     }
     .intro-headline {
       font-size: 22px;
-    }
-    .intro-graphic-line-2,
-    .intro-graphic-dot-2,
-    .intro-graphic-dot-3 {
-      display: none;
     }
     h2 {
       font-size: 22px;
