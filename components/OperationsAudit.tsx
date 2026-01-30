@@ -856,6 +856,7 @@ export const OperationsAudit: React.FC = () => {
                 <div className="footer-primary">
                   <button
                     type="button"
+                    className={step === "contact" || step === "final" ? "primary-filled" : undefined}
                     disabled={!canGoNext || submitting}
                     onClick={() => {
                       if (step === "q1") {
@@ -1560,6 +1561,11 @@ const styles = `
   .audit-footer button:not(.secondary) {
     background: transparent;
     border: 1px solid #ff5700;
+    color: #ff5700;
+  }
+  .audit-footer button.primary-filled {
+    background: rgba(255, 87, 0, 0.12);
+    border-color: #ff5700;
     color: #ff5700;
   }
   .audit-footer.intro-footer {
