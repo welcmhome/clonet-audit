@@ -390,17 +390,19 @@ export const OperationsAudit: React.FC = () => {
               <div className="intro-shape intro-shape-1" aria-hidden />
               <div className="intro-shape intro-shape-2" aria-hidden />
               <div className="intro-shape intro-shape-3" aria-hidden />
+              <div className="intro-graphic intro-graphic-line" aria-hidden />
+              <div className="intro-graphic intro-graphic-dot" aria-hidden />
               <div className="intro-block intro-head-block">
                 <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
                 <h2 className="intro-headline">See where you stand.</h2>
                 <p className="intro-lead">
-                  A few quick questions about how you run things today. No pitch—just a clear picture of your operations and where the biggest opportunities are.
+                  A few quick questions about how you run things today. A clear picture of your operations and where the biggest opportunities are.
                 </p>
               </div>
               <div className="intro-block intro-analogy-block">
                 <p className="intro-analogy-label">[ THE SHIFT ]</p>
                 <p className="intro-analogy-text">
-                  Imagine refusing to do business with the internet when it arrived. Today that looks unthinkable. The companies that said no fell behind. AI and automation are the same kind of shift—the way business is going. More information, better tools, less waste. The question isn’t whether to get on board; it’s where to start.
+                  Imagine refusing to do business with the internet when it arrived. Today that looks unthinkable. The companies that said no fell behind. AI and automation are the same kind of shift. The way business is going. More information, better tools, less waste. The question isn’t whether to get on board; it’s where to start.
                 </p>
               </div>
               <div className="intro-block intro-stat-block">
@@ -411,7 +413,7 @@ export const OperationsAudit: React.FC = () => {
               </div>
               <div className="intro-block intro-did-you-know-block">
                 <p className="intro-did-you-know">
-                  <strong>Did you know?</strong> This audit takes about two minutes. Your answers help map where your operations are today—and where they could be.
+                  <strong>Did you know?</strong> This audit takes about two minutes. Your answers help map where your operations are today, and where they could be.
                 </p>
               </div>
               <div className="intro-cta-wrap">
@@ -1231,6 +1233,26 @@ const styles = `
     bottom: 15%;
     right: 15%;
   }
+  .intro-graphic {
+    position: absolute;
+    pointer-events: none;
+  }
+  .intro-graphic-line {
+    width: 1px;
+    height: 140px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transform: rotate(-24deg);
+    top: 18%;
+    right: 22%;
+  }
+  .intro-graphic-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    bottom: 28%;
+    left: 14%;
+  }
   .intro-block {
     position: relative;
     margin-bottom: 32px;
@@ -1327,28 +1349,28 @@ const styles = `
     padding-top: 24px;
   }
   .intro-cta {
-    min-width: 160px;
-    padding: 13px 22px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    min-width: 140px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     background: transparent;
-    border: 1px solid #ff5700;
-    color: #ff5700;
+    border: 1px solid #505050;
+    color: #d4d4d4;
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
   }
   .intro-cta:hover {
-    background: rgba(255, 87, 0, 0.12);
-    border-color: #ff5700;
-    color: #ff5700;
+    border-color: #606060;
+    color: #f5f5f5;
   }
   .intro-cta:active {
     transform: scale(0.98);
   }
   .intro-cta:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 87, 0, 0.4);
+    box-shadow: 0 0 0 1px #606060;
   }
   .audit-card-content {
     animation: cardReveal 0.4s ease-out;
