@@ -394,6 +394,12 @@ export const OperationsAudit: React.FC = () => {
               <div className="intro-graphic intro-graphic-line-2" aria-hidden />
               <div className="intro-graphic intro-graphic-dot-2" aria-hidden />
               <div className="intro-graphic intro-graphic-dot-3" aria-hidden />
+              <div className="intro-block intro-analogy-block">
+                <p className="intro-analogy-label">[ THE SHIFT ]</p>
+                <p className="intro-analogy-text">
+                  Imagine refusing to do business with the internet when it arrived. Today that looks unthinkable. The companies that said no fell behind. AI and automation are the same kind of shift. The way business is going. More information, better tools, less waste. The question isn’t whether to get on board; it’s where to start.
+                </p>
+              </div>
               <div className="intro-block intro-head-block">
                 <p className="intro-label">[ OPERATIONS &amp; SYSTEMS AUDIT ]</p>
                 <h2 className="intro-headline">See where you stand.</h2>
@@ -413,12 +419,6 @@ export const OperationsAudit: React.FC = () => {
                     Start Audit
                   </button>
                 </div>
-              </div>
-              <div className="intro-block intro-analogy-block">
-                <p className="intro-analogy-label">[ THE SHIFT ]</p>
-                <p className="intro-analogy-text">
-                  Imagine refusing to do business with the internet when it arrived. Today that looks unthinkable. The companies that said no fell behind. AI and automation are the same kind of shift. The way business is going. More information, better tools, less waste. The question isn’t whether to get on board; it’s where to start.
-                </p>
               </div>
               <div className="intro-block intro-stat-block">
                 <p className="intro-stat">
