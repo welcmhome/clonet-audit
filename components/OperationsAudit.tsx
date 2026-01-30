@@ -386,6 +386,7 @@ export const OperationsAudit: React.FC = () => {
 
         <main className={step === "intro" ? "audit-main intro-main" : "audit-main"}>
           <section className="audit-card">
+            <div key={step} className="audit-card-content">
             {step === "intro" && (
               <>
                 <h2>Operations &amp; Systems Audit</h2>
@@ -789,6 +790,7 @@ export const OperationsAudit: React.FC = () => {
                 </p>
               </>
             )}
+            </div>
           </section>
 
           {/* footer navigation: hidden on intro, loading, done */}
@@ -899,6 +901,10 @@ export const OperationsAudit: React.FC = () => {
 };
 
 const styles = `
+  ::selection {
+    background: rgba(255, 87, 0, 0.25);
+    color: #f5f5f5;
+  }
   .confetti-overlay {
     position: fixed;
     inset: 0;
@@ -1110,6 +1116,7 @@ const styles = `
     left: 26px;
     height: 40px;
     z-index: 20;
+    animation: logoFade 0.6s ease-out;
   }
   .progress-row {
     margin: 12px 0 28px;
@@ -1162,6 +1169,9 @@ const styles = `
     max-width: 560px;
     margin: 0 auto;
     text-align: center;
+  }
+  .audit-card-content {
+    animation: cardReveal 0.4s ease-out;
   }
   .site-footer {
     position: fixed;
@@ -1218,11 +1228,28 @@ const styles = `
     transition: all 0.2s ease;
     font-size: 15px;
     font-weight: 400;
+    transform: translateZ(0);
   }
   .option:hover {
     border-color: #ff5700;
     background: rgba(255, 87, 0, 0.1);
   }
+  .option:active {
+    transform: scale(0.98);
+  }
+  .options .option {
+    opacity: 0;
+    animation: optionReveal 0.4s ease-out forwards;
+  }
+  .options .option:nth-child(1) { animation-delay: 0.03s; }
+  .options .option:nth-child(2) { animation-delay: 0.06s; }
+  .options .option:nth-child(3) { animation-delay: 0.09s; }
+  .options .option:nth-child(4) { animation-delay: 0.12s; }
+  .options .option:nth-child(5) { animation-delay: 0.15s; }
+  .options .option:nth-child(6) { animation-delay: 0.18s; }
+  .options .option:nth-child(7) { animation-delay: 0.21s; }
+  .options .option:nth-child(8) { animation-delay: 0.24s; }
+  .options .option:nth-child(9) { animation-delay: 0.27s; }
   .option.selected {
     border-color: #ff5700;
     background: rgba(255, 87, 0, 0.12);
@@ -1247,6 +1274,16 @@ const styles = `
     background: transparent;
     border: 1px solid #ff5700;
     color: #ff5700;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .card-footer-centered button:active {
+    transform: scale(0.98);
+  }
+  .card-footer-centered button:focus-visible,
+  .audit-footer button:focus-visible,
+  .option:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 87, 0, 0.4);
   }
   .field {
     display: flex;
@@ -1276,6 +1313,12 @@ const styles = `
     background: #0d0d0d;
     color: #f5f5f5;
     font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  input:focus {
+    outline: none;
+    border-color: rgba(255, 87, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 87, 0, 0.12);
   }
   textarea {
     width: 100%;
@@ -1287,6 +1330,12 @@ const styles = `
     color: #f5f5f5;
     font-size: 14px;
     resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  textarea:focus {
+    outline: none;
+    border-color: rgba(255, 87, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 87, 0, 0.12);
   }
   textarea::placeholder {
     color: #6b7280;
@@ -1494,6 +1543,9 @@ const styles = `
     font-weight: 500;
     transition: all 0.2s ease;
   }
+  .audit-footer button:active {
+    transform: scale(0.98);
+  }
   .audit-footer button.secondary {
     background: #0d0d0d;
     border: 1px solid #606060;
@@ -1613,6 +1665,34 @@ const styles = `
     }
     100% {
       background-position: 48px 0;
+    }
+  }
+  @keyframes cardReveal {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes optionReveal {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes logoFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
   @media (max-width: 768px) {
