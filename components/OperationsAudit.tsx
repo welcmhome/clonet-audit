@@ -1285,15 +1285,16 @@ const styles = `
     animation: introShootingStar 5s ease-in-out infinite;
   }
   .intro-shooting-star-1 {
-    top: 14%;
-    right: 18%;
-    animation-delay: 0s;
-  }
-  .intro-shooting-star-2 {
     top: 32%;
     right: 8%;
     transform: rotate(-35deg);
     animation-delay: 2.4s;
+  }
+  .intro-shooting-star-2 {
+    top: 14%;
+    right: 18%;
+    transform: rotate(-28deg);
+    animation-delay: 0s;
   }
   .intro-block {
     position: relative;
