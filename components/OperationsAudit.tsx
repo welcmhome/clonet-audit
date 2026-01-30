@@ -345,7 +345,7 @@ export const OperationsAudit: React.FC = () => {
       )}
 
       {step === "intro" && <div className="intro-orange-glow" aria-hidden />}
-      {step !== "intro" && step !== "loading" && <div className="page-orange-glow page-orange-glow-center" aria-hidden />}
+      {step !== "intro" && <div className="page-orange-glow page-orange-glow-center" aria-hidden />}
 
       <div className={step === "intro" ? "audit-frame audit-frame-intro" : "audit-frame"}>
         <header className="audit-header">
