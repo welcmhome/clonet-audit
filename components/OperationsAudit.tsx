@@ -1160,7 +1160,7 @@ const styles = `
     border-radius: 16px;
     border: 1px solid #505050;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    padding: 32px 28px 24px;
+    padding: 20px 16px 16px;
   }
   .intro-main {
     max-width: 880px;
