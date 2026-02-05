@@ -27,8 +27,16 @@ const inefficiencyOptions = [
   "Website or customer-facing systems",
 ];
 
-async function submitToBackend(payload: { answers: any; contact: any }) {
-  console.log("Audit submission", payload);
+async function submitToBackend(payload: { answers: Record<string, unknown>; contact: Record<string, string> }) {
+  const res = await fetch("/api/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || "Submission failed");
+  }
 }
 
 function isValidEmail(value: string): boolean {
@@ -206,7 +214,7 @@ export const OperationsAudit: React.FC = () => {
     try {
       await submitToBackend({ answers, contact });
       setSubmitted(true);
-      setStep("results");
+      setStep("final");
     } catch (e) {
       setErrors("Something went wrong. Please try again.");
     } finally {
@@ -795,10 +803,11 @@ export const OperationsAudit: React.FC = () => {
 
             {step === "final" && (
               <>
-                <h3>What happens next</h3>
+                <h3>Confirmation sent</h3>
                 <p>
-                  We’ll review your pre-audit responses and follow up to continue
-                  the conversation. If it’s not a fit, we’ll tell you.
+                  A team of experts will review your pre-audit and send you a
+                  breakdown of your results. We’ll be in touch at the email you
+                  provided.
                 </p>
               </>
             )}
@@ -807,8 +816,8 @@ export const OperationsAudit: React.FC = () => {
               <>
                 <h3>Thank you</h3>
                 <p>
-                  Thanks for completing the pre-audit. We’ll review your responses
-                  and be in touch shortly.
+                  Thanks for completing the pre-audit. Our team will review your
+                  responses and send you a breakdown of your results shortly.
                 </p>
               </>
             )}
@@ -893,13 +902,13 @@ export const OperationsAudit: React.FC = () => {
                       else if (step === "q9") setStep("loading");
                       else if (step === "results") setStep("contact");
                       else if (step === "contact") handleSubmit();
-                      else if (step === "final") handleSubmit();
+                      else if (step === "final") setStep("done");
                     }}
                   >
                     {step === "contact"
                       ? "Unlock Results"
                       : step === "final"
-                      ? "Request a Call"
+                      ? "Done"
                       : "Next"}
                   </button>
                 </div>
