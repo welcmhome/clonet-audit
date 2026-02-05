@@ -13,26 +13,33 @@ const QUESTION_LABELS: Record<string, string> = {
 };
 
 function formatPayloadForTelegram(payload: { answers: Record<string, unknown>; contact: Record<string, string> }): string {
-  const { contact, answers } = payload;
+  const contact = payload.contact ?? {};
+  const answers = payload.answers ?? {};
   const lines: string[] = [
     "🔔 New Pre-Audit Submission",
     "",
-    "— Contact —",
+    "——— Contact ———",
     `Name: ${contact.firstName || "—"}`,
     `Email: ${contact.email || "—"}`,
     `Phone: ${contact.phone || "—"}`,
     `Company: ${contact.company || "—"}`,
     "",
-    "— Answers —",
   ];
-  for (const key of ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"]) {
+  const keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"];
+  keys.forEach((key, i) => {
     const label = QUESTION_LABELS[key];
     const value = answers[key];
-    if (value === undefined || value === "") continue;
-    const text = Array.isArray(value) ? (value as string[]).join(", ") : String(value);
-    lines.push(`${label}: ${text}`);
-  }
-  return lines.join("\n");
+    const stepNum = i + 1;
+    lines.push(`——— Step ${stepNum}: ${label} ———`);
+    if (value === undefined || value === "") {
+      lines.push("—");
+    } else {
+      const text = Array.isArray(value) ? (value as string[]).join(", ") : String(value);
+      lines.push(text);
+    }
+    lines.push("");
+  });
+  return lines.join("\n").trimEnd();
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -50,8 +57,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-    const { answers = {}, contact = {} } = body;
+    const rawBody = req.body;
+    const body =
+      rawBody == null
+        ? {}
+        : typeof rawBody === "string"
+          ? (() => {
+              try {
+                return JSON.parse(rawBody);
+              } catch {
+                return {};
+              }
+            })()
+          : rawBody;
+    const answers = body.answers ?? {};
+    const contact = body.contact ?? {};
     const text = formatPayloadForTelegram({ answers, contact });
 
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -65,14 +85,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }),
     });
 
-    const data = await response.json();
+    let data: { ok?: boolean } = {};
+    try {
+      data = await response.json();
+    } catch {
+      console.error("Telegram API returned non-JSON");
+      return res.status(200).json({ ok: true, sent: false });
+    }
     if (!data.ok) {
       console.error("Telegram API error:", data);
-      return res.status(500).json({ error: "Failed to send notification", ok: false });
+      return res.status(200).json({ ok: true, sent: false });
     }
     return res.status(200).json({ ok: true, sent: true });
   } catch (e) {
     console.error("Submit API error:", e);
-    return res.status(500).json({ error: "Server error", ok: false });
+    // Return 200 so the user still sees success; check server logs to fix
+    return res.status(200).json({ ok: true, sent: false });
   }
 }
