@@ -846,7 +846,7 @@ export const OperationsAudit: React.FC = () => {
               </button>
             </footer>
           )}
-          {step !== "done" && step !== "intro" && (
+          {step !== "done" && (
             <footer className={step === "contact" ? "audit-footer audit-footer-contact" : "audit-footer"}>
               <div className="footer-left">
                 <button
