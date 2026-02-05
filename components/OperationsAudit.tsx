@@ -374,7 +374,7 @@ export const OperationsAudit: React.FC = () => {
             )}
           </div>
           <div className="header-center">
-            {step !== "intro" && step !== "contact" && (
+            {step !== "intro" && step !== "contact" && step !== "done" && (
               <img
                 src="/CLONET%20TRANSPARENT%20LOGO.png"
                 alt="Clonet logo"
@@ -817,7 +817,7 @@ export const OperationsAudit: React.FC = () => {
                 </div>
                 <h3>Thank you</h3>
                 <p className="confirmation-lead">
-                  You’re ahead of most—taking a clear look at your operations is the first step. Our team will review your pre-audit and send you a tailored breakdown at the email you provided.
+                  You’re ahead of most. Taking a clear look at your operations is the first step. Our team will review your pre-audit and send you a tailored breakdown at the email you provided.
                 </p>
                 <p className="confirmation-cta">We’ll be in touch soon.</p>
               </div>
