@@ -43,8 +43,17 @@ function formatPayloadForTelegram(payload: { answers: Record<string, unknown>; c
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === "GET") {
+    const hasToken = !!process.env.TELEGRAM_BOT_TOKEN;
+    const hasChatId = !!process.env.TELEGRAM_CHAT_ID;
+    return res.status(200).json({
+      ok: true,
+      message: "Submit API is running",
+      telegramConfigured: hasToken && hasChatId,
+    });
+  }
   if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
+    res.setHeader("Allow", "GET, POST");
     return res.status(405).json({ error: "Method not allowed" });
   }
 

@@ -28,12 +28,16 @@ const inefficiencyOptions = [
 ];
 
 async function submitToBackend(payload: { answers: Record<string, unknown>; contact: Record<string, string> }) {
-  const res = await fetch("/api/submit", {
+  const url = typeof window !== "undefined" ? `${window.location.origin}/api/submit` : "/api/submit";
+  const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
   if (!res.ok) {
+    if (res.status === 404) {
+      throw new Error("SUBMIT_NOT_AVAILABLE");
+    }
     const err = await res.json().catch(() => ({}));
     throw new Error(err.error || "Submission failed");
   }
@@ -216,7 +220,10 @@ export const OperationsAudit: React.FC = () => {
       setSubmitted(true);
       setStep("final");
     } catch (e) {
-      setErrors("Something went wrong. Please try again.");
+      const msg = e instanceof Error && e.message === "SUBMIT_NOT_AVAILABLE"
+        ? "Submission isn’t available right now. Please try again in a few minutes or contact us."
+        : "Something went wrong. Please try again.";
+      setErrors(msg);
     } finally {
       setSubmitting(false);
     }
