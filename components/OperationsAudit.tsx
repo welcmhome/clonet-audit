@@ -218,7 +218,7 @@ export const OperationsAudit: React.FC = () => {
     try {
       await submitToBackend({ answers, contact });
       setSubmitted(true);
-      setStep("final");
+      setStep("done");
     } catch (e) {
       const msg = e instanceof Error && e.message === "SUBMIT_NOT_AVAILABLE"
         ? "Submission isn’t available right now. Please try again in a few minutes or contact us."
@@ -808,69 +808,69 @@ export const OperationsAudit: React.FC = () => {
               </div>
             )}
 
-            {step === "final" && (
-              <>
-                <h3>Confirmation sent</h3>
-                <p>
-                  A team of experts will review your pre-audit and send you a
-                  breakdown of your results. We’ll be in touch at the email you
-                  provided.
-                </p>
-              </>
-            )}
-
             {step === "done" && (
-              <>
+              <div className="confirmation-block confirmation-block-done">
+                <div className="confirmation-icon" aria-hidden>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                </div>
                 <h3>Thank you</h3>
-                <p>
-                  Thanks for completing the pre-audit. Our team will review your
-                  responses and send you a breakdown of your results shortly.
+                <p className="confirmation-lead">
+                  You’re ahead of most—taking a clear look at your operations is the first step. Our team will review your pre-audit and send you a tailored breakdown at the email you provided.
                 </p>
-              </>
+                <p className="confirmation-cta">We’ll be in touch soon.</p>
+              </div>
             )}
             </div>
           </section>
 
-          {/* footer navigation: hidden on intro, loading, done */}
-          {step !== "done" && (
-            <footer className={step === "contact" || step === "final" ? "audit-footer audit-footer-contact" : "audit-footer"}>
+          {/* footer: contact step has Unlock Results; done step has Exit / Restart */}
+          {step === "done" && (
+            <footer className="audit-footer audit-footer-done">
+              <button
+                type="button"
+                className="secondary"
+                onClick={() => {
+                  if (typeof window !== "undefined") window.location.href = "https://clonet.ai";
+                }}
+              >
+                Exit
+              </button>
+              <button
+                type="button"
+                className="primary-filled"
+                onClick={doResetAudit}
+              >
+                Restart
+              </button>
+            </footer>
+          )}
+          {step !== "done" && step !== "intro" && (
+            <footer className={step === "contact" ? "audit-footer audit-footer-contact" : "audit-footer"}>
               <div className="footer-left">
                 <button
                   className="secondary"
                   type="button"
                   onClick={() => {
-                    if (step === "q1") {
-                      setStep("intro");
-                    } else if (step === "q2") {
-                      setStep("q1");
-                    } else if (step === "q3") {
-                      setStep("q2");
-                    } else if (step === "q4") {
-                      setStep("q3");
-                    } else if (step === "q5") {
-                      setStep("q4");
-                    } else if (step === "q6") {
-                      setStep("q5");
-                    } else if (step === "q7") {
-                      setStep("q6");
-                    } else if (step === "q8") {
-                      setStep("q7");
-                    } else if (step === "q9") {
-                      setStep("q8");
-                    } else if (step === "results") {
-                      setStep("q9");
-                    } else if (step === "contact") {
-                      setStep("q9");
-                    } else if (step === "final") {
-                      setStep("contact");
-                    }
+                    if (step === "q1") setStep("intro");
+                    else if (step === "q2") setStep("q1");
+                    else if (step === "q3") setStep("q2");
+                    else if (step === "q4") setStep("q3");
+                    else if (step === "q5") setStep("q4");
+                    else if (step === "q6") setStep("q5");
+                    else if (step === "q7") setStep("q6");
+                    else if (step === "q8") setStep("q7");
+                    else if (step === "q9") setStep("q8");
+                    else if (step === "results") setStep("q9");
+                    else if (step === "contact") setStep("q9");
                   }}
                 >
                   Previous
                 </button>
               </div>
               <div className="footer-right">
-                {step !== "contact" && step !== "final" && (
+                {step !== "contact" && (
                   <button
                     className="skip-text"
                     type="button"
@@ -885,7 +885,6 @@ export const OperationsAudit: React.FC = () => {
                       else if (step === "q8") setStep("q9");
                       else if (step === "q9") setStep("loading");
                       else if (step === "results") setStep("contact");
-                      else if (step === "contact") setStep("final");
                     }}
                   >
                     Skip
@@ -894,12 +893,11 @@ export const OperationsAudit: React.FC = () => {
                 <div className="footer-primary">
                   <button
                     type="button"
-                    className={step === "contact" || step === "final" ? "primary-filled" : undefined}
+                    className={step === "contact" ? "primary-filled" : undefined}
                     disabled={!canGoNext || submitting}
                     onClick={() => {
-                      if (step === "q1") {
-                        setStep("q2");
-                      } else if (step === "q2") setStep("q3");
+                      if (step === "q1") setStep("q2");
+                      else if (step === "q2") setStep("q3");
                       else if (step === "q3") setStep("q4");
                       else if (step === "q4") setStep("q5");
                       else if (step === "q5") setStep("q6");
@@ -909,14 +907,9 @@ export const OperationsAudit: React.FC = () => {
                       else if (step === "q9") setStep("loading");
                       else if (step === "results") setStep("contact");
                       else if (step === "contact") handleSubmit();
-                      else if (step === "final") setStep("done");
                     }}
                   >
-                    {step === "contact"
-                      ? "Unlock Results"
-                      : step === "final"
-                      ? "Done"
-                      : "Next"}
+                    {step === "contact" ? "Unlock Results" : "Next"}
                   </button>
                 </div>
               </div>
@@ -1642,6 +1635,87 @@ const styles = `
   .contact-step-inner .error {
     text-align: center;
   }
+  .confirmation-block {
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+    animation: confirmationReveal 0.5s ease-out forwards;
+  }
+  .confirmation-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 87, 0, 0.2) 0%, rgba(255, 87, 0, 0.06) 100%);
+    border: 1px solid rgba(255, 87, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff5700;
+  }
+  .confirmation-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .confirmation-block h3 {
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .confirmation-lead {
+    color: #9ca3af;
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .confirmation-next {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    border-top: 1px solid #333;
+    padding-top: 16px;
+  }
+  .confirmation-next li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #d1d5db;
+  }
+  .confirmation-next li:last-child {
+    margin-bottom: 0;
+  }
+  .confirmation-next li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 87, 0, 0.7);
+  }
+  .confirmation-cta {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .confirmation-block-done .confirmation-cta {
+    color: rgba(255, 87, 0, 0.9);
+  }
+  @keyframes confirmationReveal {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .results-preview {
     max-width: 560px;
     margin: 10px auto 16px;
@@ -1768,6 +1842,16 @@ const styles = `
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+  }
+  .audit-footer-done {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .audit-footer-done button {
+    min-width: 140px;
   }
   .footer-left,
   .footer-right {
