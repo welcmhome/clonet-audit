@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const QUESTION_LABELS: Record<string, string> = {
+  industry: "Industry",
   q1: "Operations setup",
   q2: "Inefficient areas",
   q3: "Custom tools",
@@ -25,7 +26,7 @@ function formatPayloadForTelegram(payload: { answers: Record<string, unknown>; c
     `Company: ${contact.company || "—"}`,
     "",
   ];
-  const keys = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"];
+  const keys = ["industry", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"];
   keys.forEach((key, i) => {
     const label = QUESTION_LABELS[key];
     const value = answers[key];

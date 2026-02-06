@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 type Step =
   | "intro"
+  | "industry"
   | "q1"
   | "q2"
   | "q3"
@@ -16,6 +17,20 @@ type Step =
   | "contact"
   | "final"
   | "done";
+
+const industryOptions = [
+  "Retail & e-commerce",
+  "Professional services (legal, accounting, consulting)",
+  "Trades & contractors (roofing, plumbing, HVAC, construction)",
+  "Healthcare",
+  "Tech & software",
+  "Marketing, media & creative",
+  "Fitness & wellness",
+  "Transport, logistics & delivery",
+  "Manufacturing & distribution",
+  "Food & beverage",
+  "Other",
+];
 
 const inefficiencyOptions = [
   "Lead intake / inquiries",
@@ -68,6 +83,7 @@ export const OperationsAudit: React.FC = () => {
   const [step, setStep] = useState<Step>("intro");
 
   const [answers, setAnswers] = useState({
+    industry: "",
     q1: "",
     q2: [] as string[],
     q3: "",
@@ -140,6 +156,7 @@ export const OperationsAudit: React.FC = () => {
   const doResetAudit = () => {
     confettiFiredRef.current = false;
     setAnswers({
+      industry: "",
       q1: "",
       q2: [],
       q3: "",
@@ -229,7 +246,7 @@ export const OperationsAudit: React.FC = () => {
     }
   };
 
-  const questionSteps: Step[] = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"];
+  const questionSteps: Step[] = ["industry", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9"];
   const isQuestionStep = questionSteps.includes(step);
   const currentIndex = questionSteps.indexOf(step);
   const totalQuestions = questionSteps.length;
@@ -237,7 +254,9 @@ export const OperationsAudit: React.FC = () => {
     currentIndex >= 0 ? ((currentIndex + 1) / totalQuestions) * 100 : 0;
 
   const canGoNext =
-    step === "q1"
+    step === "industry"
+      ? !!answers.industry
+      : step === "q1"
       ? !!answers.q1
       : step === "q2"
       ? answers.q2.length > 0
@@ -417,7 +436,7 @@ export const OperationsAudit: React.FC = () => {
                     onClick={() => {
                       setTimeout(() => {
                         blockQ1ClicksUntilRef.current = Date.now() + 800;
-                        goTo("q1");
+                        goTo("industry");
                       }, 400);
                     }}
                   >
@@ -447,6 +466,27 @@ export const OperationsAudit: React.FC = () => {
             <>
           <section className="audit-card">
             <div key={step} className="audit-card-content">
+            {step === "industry" && (
+              <>
+                <h3>What industry is your business in?</h3>
+                <div className="options">
+                  {industryOptions.map((opt) => (
+                    <button
+                      key={opt}
+                      className={
+                        answers.industry === opt ? "option selected" : "option"
+                      }
+                      onClick={() =>
+                        setAnswers((prev) => ({ ...prev, industry: opt }))
+                      }
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
             {step === "q1" && (
               <>
                 <h3>How would you describe your current operations setup?</h3>
@@ -853,7 +893,8 @@ export const OperationsAudit: React.FC = () => {
                   className="secondary"
                   type="button"
                   onClick={() => {
-                    if (step === "q1") setStep("intro");
+                    if (step === "industry") setStep("intro");
+                    else if (step === "q1") setStep("industry");
                     else if (step === "q2") setStep("q1");
                     else if (step === "q3") setStep("q2");
                     else if (step === "q4") setStep("q3");
@@ -875,7 +916,8 @@ export const OperationsAudit: React.FC = () => {
                     className="skip-text"
                     type="button"
                     onClick={() => {
-                      if (step === "q1") setStep("q2");
+                      if (step === "industry") setStep("q1");
+                      else if (step === "q1") setStep("q2");
                       else if (step === "q2") setStep("q3");
                       else if (step === "q3") setStep("q4");
                       else if (step === "q4") setStep("q5");
@@ -896,7 +938,8 @@ export const OperationsAudit: React.FC = () => {
                     className={step === "contact" ? "primary-filled" : undefined}
                     disabled={!canGoNext || submitting}
                     onClick={() => {
-                      if (step === "q1") setStep("q2");
+                      if (step === "industry") setStep("q1");
+                      else if (step === "q1") setStep("q2");
                       else if (step === "q2") setStep("q3");
                       else if (step === "q3") setStep("q4");
                       else if (step === "q4") setStep("q5");
